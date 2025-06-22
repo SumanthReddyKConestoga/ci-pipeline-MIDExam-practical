@@ -5,7 +5,7 @@ A concise demonstration of a GitHub Actions–driven CI pipeline for a sample No
 
 ---
 
-## 📁 Repository Structure
+##  Repository Structure
 
 ```
 
@@ -29,7 +29,7 @@ ci-practical-Sumanth-9040660/
 
 ---
 
-## 🚀 Prerequisites
+##  Prerequisites
 
 - **Git** & **Node.js** v16+  
 - **Docker** & Docker Hub account  
@@ -39,11 +39,11 @@ ci-practical-Sumanth-9040660/
 
 ---
 
-## ⚙️ Setup & Local Development
+##  Setup & Local Development
 
 1. **Clone repository**  
    ```bash
-   git clone git@github.com:<YOUR_ORG>/ci-practical-Sumanth-9040660.git
+   git clone https://github.com/SumanthReddyKConestoga/ci-pipeline-MIDExam-practical
    cd ci-practical-Sumanth-9040660
 ````
 
@@ -70,7 +70,7 @@ ci-practical-Sumanth-9040660/
 
 ---
 
-## 🔧 Branching & Deployment Strategy
+##  Branching & Deployment Strategy
 
 * **`develop`**
 
@@ -83,7 +83,7 @@ Feature work should be done on branches off `develop`, with PRs targeting `devel
 
 ---
 
-## 🔄 CI Pipeline (`.github/workflows/ci.yml`)
+## CI Pipeline (`.github/workflows/ci.yml`)
 
 1. **Checkout & Setup**
 2. **Build** (`npm install` & optional `npm run build`)
@@ -108,7 +108,7 @@ docker run -d -p 3000:3000 $DOCKER_USER/my-app:latest
 
 ---
 
-## 🔒 Environment Configuration
+## Environment Configuration
 
 * **Development**: `config/.env.dev`
 * **Production**:  `config/.env.prod`
@@ -117,7 +117,7 @@ docker run -d -p 3000:3000 $DOCKER_USER/my-app:latest
 
 ---
 
-## ✅ Repository Hygiene
+## Repository Hygiene
 
 * **`.gitignore`** includes:
 
