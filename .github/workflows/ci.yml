@@ -60,10 +60,11 @@ jobs:
       - name: Lint code
         run: npm run lint
 
-  publish:
+    deploy:
     runs-on: ubuntu-latest
     needs: lint
     if: |
+      github.ref == 'refs/heads/develop' ||
       github.ref == 'refs/heads/main' ||
       github.event_name == 'workflow_dispatch'
     steps:
@@ -75,17 +76,22 @@ jobs:
         with:
           node-version: 18
 
-      - name: Build Docker image
+      - name: Determine tag
+        id: tagger
         run: |
-          docker build \
-            -t my-org/ci-sample:${{ github.ref == 'refs/heads/main' && 'latest' || 'dev' }} .
+          if [[ "${GITHUB_REF}" == "refs/heads/main" ]]; then
+            echo "tag=latest" >> $GITHUB_OUTPUT
+          else
+            echo "tag=dev"    >> $GITHUB_OUTPUT
+          fi
 
-      - name: Log in to Docker Hub
+      - name: Docker Login
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Push Docker image
+      - name: Build & Push Image
         run: |
-          docker push my-org/ci-sample:${{ github.ref == 'refs/heads/main' && 'latest' || 'dev' }}
+          docker build -t my-org/ci-sample:${{ steps.tagger.outputs.tag }} .
+          docker push my-org/ci-sample:${{ steps.tagger.outputs.tag }}
