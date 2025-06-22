@@ -85,8 +85,8 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
-          username: "RandomUserXYZ"          
-          password: "SecureP@ssw0rd123"      
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build Docker image
         run: docker build -t my-org/ci-sample:${{ steps.tagger.outputs.tag }} .
