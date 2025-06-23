@@ -1,12 +1,18 @@
 const express = require('express');
-const app     = express();
-app.get('/', (req, res) => res.json({ status: 'ok' }));
+const app = express();
 
-// For CI tests
+// Primary route  
+app.get('/', (req, res) => {
+  res.json({ message: 'Hello from Sumanth (ID: 9040660)!' });
+});
+
+// Export for CI tests  
 module.exports = app;
 
-// To run locally:
+// Only start server when invoked directly  
 if (require.main === module) {
   const port = process.env.PORT || 3000;
-  app.listen(port, () => console.log(`Listening on ${port}`));
+  app.listen(port, () => 
+    console.log(`App running on port ${port}`)
+  );
 }
