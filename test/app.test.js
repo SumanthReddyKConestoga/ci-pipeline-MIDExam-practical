@@ -9,9 +9,11 @@ describe('Root Endpoint (GET /)', () => {
     expect(res.statusCode).toBe(200);
   });
 
-  it('should return JSON body { status: "ok" }', async () => {
+  it('should return JSON body with greeting message', async () => {
     const res = await request(app).get('/');
-    expect(res.body).toEqual({ status: 'ok' });
+    expect(res.body).toEqual({
+      message: 'Hello from Sumanth (ID: 9040660)!'
+    });
   });
 
   it('should send Content-Type: application/json', async () => {
