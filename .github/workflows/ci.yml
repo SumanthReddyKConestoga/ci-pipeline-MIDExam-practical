@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  # 1️⃣ BUILD: Compile your code
+  #  BUILD: Compile code
   build:
     name: Build Application
     runs-on: ubuntu-latest
@@ -27,7 +27,7 @@ jobs:
       - name: Build application
         run: npm run build
 
-  # 2️⃣ TEST: Validate functionality
+  # TEST: Validate functionality
   test:
     name: Run Tests
     runs-on: ubuntu-latest
@@ -47,7 +47,7 @@ jobs:
       - name: Run tests
         run: npm test
 
-  # 3️⃣ LINT: Enforce code quality
+  #  LINT: Enforce code quality
   lint:
     name: Lint Code
     runs-on: ubuntu-latest
@@ -67,7 +67,7 @@ jobs:
       - name: Lint code
         run: npm run lint
 
-  # 4️⃣ PUBLISH: Build & push Docker image
+  #  PUBLISH: Build & push Docker image
   publish:
     name: Build & Push Docker Image
     runs-on: ubuntu-latest
@@ -94,8 +94,8 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKERHUB_USER }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          username: sumanthreddy
+          password: Sumanth@9001
 
       - name: Build Docker image
         run: |
